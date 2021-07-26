@@ -7,9 +7,9 @@ import App from './App';
 
 const rootElement = document.querySelector('#root');
 
-ReactDOM.render(
-  <RelayEnvironmentProvider environment={Environment}>
-    <App />
-  </RelayEnvironmentProvider>,
-  rootElement,
-);
+// ReactDOM.render(
+//   <RelayEnvironmentProvider environment={Environment}>
+//     <App />
+//   </RelayEnvironmentProvider>,
+//   rootElement,
+// );
