@@ -10,17 +10,13 @@ jobs:
       - uses: actions/checkout@v2 
       - name: My first step
         uses: ./.github/actions/my-action
+      - uses: actions/checkout@v2 
+        with:
+          path: client
       - name: Set up Node.js
-        uses: actions/setup-node@master
+        uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Cache node_modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{runner.OS}}-build-${{hashFiles('**/yarn.lock')}}
-          restore-keys: |
-            ${{ runner.OS }}-build-${{ runner.OS }}-
       - name: Install dependencies
         run: cd ..  && cd client && yarn install --prod --pure-lockfile
         working-directory: client
