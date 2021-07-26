@@ -21,6 +21,7 @@ jobs:
             ${{ runner.OS }}-build-${{ runner.OS }}-
       - name: Install dependencies
         run: yarn install --prod --pure-lockfile
+        working-directory: ./client
 
       - name: Build
         run: yarn run build
