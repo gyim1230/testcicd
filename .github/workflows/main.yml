@@ -23,8 +23,7 @@ jobs:
         run: yarn install --prod --pure-lockfile
         working-directory: client
       - name: Build
-        run: cd .. && yarn run build
-        working-directory: client
+        run: cd .. && cd client && yarn run build
         env:
           NODE_ENV: production
       - name: Test
