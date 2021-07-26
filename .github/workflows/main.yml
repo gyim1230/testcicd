@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2 
       - name: My first step
-       uses: ./.github/actions/my-action
+        uses: ./.github/actions/my-action
       - name: Set up Node.js
         uses: actions/setup-node@master
         with:
@@ -25,7 +25,7 @@ jobs:
         run: cd ..  && cd client && yarn install --prod --pure-lockfile
         working-directory: client
       - name: Build
-        run: cd ..  && cd client && yarn run build
+        run: yarn run build
         env:
           NODE_ENV: production
       - name: Test
