@@ -28,5 +28,5 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{secrets.GH_PAT}}
           PUBLISH_BRANCH: master
-          PUBLISH_DIR: ./client/public
+          PUBLISH_DIR: ./client/dist
           SCRIPT_MODE: true
