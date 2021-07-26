@@ -9,6 +9,7 @@ import ExamplePage from './page/ExamplePage';
 
 const App: React.FC = () => (
   <BrowserRouter>
+    124124
     <Switch>
       <Route exact path="/" component={ExamplePage} />
       <Route path="/login" component={LoginPage} />
