@@ -1,34 +1,31 @@
-name: Deploy Project
+name: GitHub Pages
+
 on:
   push:
     branches:
-      - master
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12.x"
+      - master  # Set a branch name to trigger deployment
+  pull_request:
 
-      - name: Install dependencies
-        run: yarn install --prod --pure-lockfile
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.85.0'
+
       - name: Build
-        run: yarn run build
-        env:
-          NODE_ENV: production
-      - name: Test
-        run: yarn run test
-        env:
-          NODE_ENV: production
+        run: hugo --minify
+
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v2.5.0
-        env:
-          PERSONAL_TOKEN: ${{secrets.GH_PAT}}
-          PUBLISH_BRANCH: master
-          PUBLISH_DIR: ./public
-          SCRIPT_MODE: true
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          publish_dir: ./public         
