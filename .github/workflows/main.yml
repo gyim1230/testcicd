@@ -25,10 +25,12 @@ jobs:
 
       - name: Build
         run: yarn run build
+        working-directory: client
         env:
           NODE_ENV: production
       - name: Test
         run: yarn run test
+        working-directory: client
         env:
           NODE_ENV: production
       - name: Deploy
