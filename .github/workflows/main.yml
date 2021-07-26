@@ -7,9 +7,9 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@master
       - name: Set up Node.js
-        uses: ./.github/actions/my-action
+        uses: actions/setup-node@master
         with:
           node-version: 12.x
       - name: Cache node_modules
@@ -20,15 +20,14 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-build-${{ runner.OS }}-
       - name: Install dependencies
-        run: yarn install --prod --pure-lockfile
+        run: cd ..  && cd client && yarn install --prod --pure-lockfile
         working-directory: client
       - name: Build
-        run: cd ..  && yarn run build
+        run: yarn run build
         env:
           NODE_ENV: production
       - name: Test
         run: yarn run test
-        working-directory: client
         env:
           NODE_ENV: production
       - name: Deploy
