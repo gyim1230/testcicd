@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Set up Node.js
-        uses: actions/setup-node@master
+        uses: ./.github/actions/automatic-tests
         with:
           node-version: 12.x
       - name: Cache node_modules
