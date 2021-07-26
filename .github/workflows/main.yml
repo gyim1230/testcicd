@@ -7,18 +7,20 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Set up Node.js
-        uses: actions/setup-node@master
+      - name: Checkout
+        uses: actions/checkout@v1
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: "12.x"
+
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{runner.OS}}-build-${{hashFiles('**/yarn.lock')}}
-          restore-keys: |
-            ${{ runner.OS }}-build-${{ runner.OS }}-
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }} # Cache key based on os + hashed yarn.lock contents
+
       - name: Install dependencies
         run: yarn install --prod --pure-lockfile
       - name: Build
