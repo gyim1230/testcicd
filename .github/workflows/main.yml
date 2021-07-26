@@ -20,22 +20,22 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-build-${{ runner.OS }}-
       - name: Install dependencies
-         working-directory: ./client
         run: yarn install --prod --pure-lockfile
+        working-directory: ./client
 
       - name: Build
-         working-directory: ./client
         run: yarn run build
+        working-directory: ./client
         env:
           NODE_ENV: production
       - name: Test
-         working-directory: ./client
         run: yarn run test
+        working-directory: ./client
         env:
           NODE_ENV: production
       - name: Deploy
-         working-directory: ./client
         uses: peaceiris/actions-gh-pages@v2.5.0
+        working-directory: ./client
         env:
           PERSONAL_TOKEN: ${{secrets.GH_PAT}}
           PUBLISH_BRANCH: master
