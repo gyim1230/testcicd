@@ -6,6 +6,8 @@ if [ -d  dist ]; then
     rm -rf  dist
 fi
 
+yarn
+
 tsc
 
 forver start dist/app.js
