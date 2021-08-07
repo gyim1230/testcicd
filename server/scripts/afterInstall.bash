@@ -1,8 +1,10 @@
 #!/bin/bash
 
-cd server
+cd /home/ubuntu/dev-answer/server
 
-rm -rf dist
+if [ -d  dist ]; then
+    rm -rf  dist
+fi
 
 tsc
 
