@@ -8,4 +8,4 @@ if [ -d /home/ubuntu/dev-answer ]; then
     rm -rf /home/ubuntu/dev-answer
 fi
 
-/usr/local/bin/pm2 start
+/usr/local/bin/pm2 start app
