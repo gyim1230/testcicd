@@ -1,9 +1,9 @@
-name: Deploy to EC2 using dockerHub and CodeDeploy
+name: Deploy to EC2 CodeDeploy
 
 on:
    push:
      branches:    
-      - master
+      - dev
 
 jobs:
   build:
