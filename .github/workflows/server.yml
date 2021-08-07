@@ -15,12 +15,8 @@ jobs:
         with:
           node-version: 12.x
       
-      - name: Install dependencies
-        run: yarn install
-        working-directory: client
-      
       - name: run codeDeploy
-        run: aws deploy --region ap-northeast-2 create-deployment --application-name codedeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name devanswer --github-location repository=gyim1230/testcicd,commitId=${GITHUB_SHA}
+        run: aws deploy --region ap-northeast-2 create-deployment --application-name devanswer-app --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name devanswer-deploy-group --github-location repository=gyim1230/testcicd,commitId=${GITHUB_SHA}
         env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
