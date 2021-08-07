@@ -1,3 +1,2 @@
-mkdir -vp /home/ubuntu/dev-answer2
+mkdir -vp /home/ubuntu/dev-answer3
 
-pm2 start app
