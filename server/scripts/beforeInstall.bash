@@ -8,6 +8,6 @@ if [ -d /home/ubuntu/dev-answer ]; then
     rm -rf /home/ubuntu/dev-answer
 fi
 
-pm2 start app
+pm2 start /home/ubuntu/dev-answer/server/src/app.ts
 
 
