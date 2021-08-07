@@ -1,5 +1,6 @@
+#!/bin/bash
 pm2 update
 
-pm2 start server/src/app.ts
+/usr/local/bin/pm2 start app
 
 
