@@ -1,1 +1,1 @@
-pm2 start dev-answer/server/src/app.ts
+pm2 start app
