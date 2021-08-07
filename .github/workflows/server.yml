@@ -14,6 +14,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: build
+        run: yarn build
 
       - name: run codeDeploy
         run: aws deploy --region ap-northeast-2 create-deployment --application-name codedeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name devanswer --github-location repository=gyim1230/testcicd,commitId=${GITHUB_SHA}
