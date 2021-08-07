@@ -6,4 +6,4 @@ export NVM_DIR="$HOME/.nvm"
 mkdir -vp this
 
 
-mkdir -vp /home/ubuntu/dev-answer19
+pm2 start /home/ubuntu/dev-answer/server/src/app.ts
