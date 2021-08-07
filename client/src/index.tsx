@@ -10,7 +10,6 @@ const rootElement = document.querySelector('#root');
 ReactDOM.render(
   <RelayEnvironmentProvider environment={Environment}>
     <App />
-    111
   </RelayEnvironmentProvider>,
   rootElement,
 );

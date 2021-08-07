@@ -1,0 +1,24 @@
+name: Deploy to EC2 using dockerHub and CodeDeploy
+
+on:
+   push:
+     branches:    
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: run codeDeploy
+        run: aws deploy --region ap-northeast-2 create-deployment --application-name codedeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name devanswer --github-location repository=gyim1230/testcicd,commitId=${GITHUB_SHA}
+        env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            Default_region_name: ap-northeast-2
+   
