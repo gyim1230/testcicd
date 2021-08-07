@@ -19,10 +19,6 @@ jobs:
         run: yarn install
         working-directory: client
       
-      - name: lint
-        run: yarn run lint
-        working-directory: server
-
       - name: run codeDeploy
         run: aws deploy --region ap-northeast-2 create-deployment --application-name codedeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name devanswer --github-location repository=gyim1230/testcicd,commitId=${GITHUB_SHA}
         env:
