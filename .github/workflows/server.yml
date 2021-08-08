@@ -17,8 +17,9 @@ jobs:
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
-            cd /home/ubuntu/hello/testcicd
-            sudo git pull
-            cd server
-            sudo yarn
+            cd /home/ubuntu/
+            mkdir makefoldertest
+            # sudo git pull
+            # cd server
+            # sudo yarn
             # sudo yarn start
